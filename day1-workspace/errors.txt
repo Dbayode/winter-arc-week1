@@ -1,0 +1,3 @@
+ERROR Database timeout
+ERROR Connection refused
+ERROR Authentication failed

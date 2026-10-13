@@ -1,0 +1,8 @@
+# Example ONLY: copy the relevant Host block into ~/.ssh/config
+# Do not commit private keys or sensitive real hostnames.
+Host winter-arc-lab
+    HostName 192.0.2.10
+    User ubuntu
+    Port 22
+    IdentityFile ~/.ssh/winter_arc_lab
+    IdentitiesOnly yes

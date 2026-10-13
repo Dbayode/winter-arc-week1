@@ -1,0 +1,15 @@
+[Unit]
+Description=DevOps Winter Arc demo heartbeat worker
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/demo-worker.sh
+User=nobody
+Group=nogroup
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

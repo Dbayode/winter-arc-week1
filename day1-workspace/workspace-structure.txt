@@ -1,0 +1,12 @@
+/opt/myapp
+├── bin
+│   └── start.sh
+├── config
+│   └── app.conf
+├── data
+└── logs
+    ├── app.log
+    ├── errors.txt
+    └── error.txt
+
+5 directories, 5 files

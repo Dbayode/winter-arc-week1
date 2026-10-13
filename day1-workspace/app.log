@@ -1,0 +1,20 @@
+INFO Application started
+INFO Configuration loaded
+INFO Database connection initiated
+ERROR Database timeout
+INFO Retrying connection
+INFO Database connected
+WARN High memory usage
+INFO User logged in
+ERROR Connection refused
+INFO Request received
+INFO Request processed
+INFO Response sent
+WARN Slow response
+INFO Health check passed
+ERROR Authentication failed
+INFO User logged out
+INFO Cache refreshed
+INFO Background task started
+INFO Background task completed
+INFO Application running
