@@ -1,0 +1,13 @@
+[Unit]
+Description=DevOps Winter Arc Background Worker
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/local/bin/demo-worker.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
