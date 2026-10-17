@@ -1,0 +1,14 @@
+server {
+    listen 8085;
+    server_name _;
+
+    root /var/www/myapp;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    access_log /var/log/nginx/myapp-access.log;
+    error_log /var/log/nginx/myapp-error.log;
+}

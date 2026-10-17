@@ -1,36 +1,111 @@
-# Day 05 — DNS, HTTP/HTTPS & Nginx
+# Day 05 — DNS, HTTP & Nginx
 
-## Mission
-Understand DNS resolution and HTTP response codes. Run a local backend on port 3000 and configure Nginx as a reverse proxy.
+## Project Overview
 
-## Study
-DNS lookup; TCP connections; HTTP methods and status codes; TLS basics; reverse proxies; Nginx configuration testing.
+This project demonstrates how to configure an Nginx web server
+and reverse proxy on Ubuntu Linux.
 
-## Lab (Ubuntu VM)
+It is part of my 90-Day DevOps Winter Arc challenge.
+
+## Learning Objectives
+
+- Understand DNS resolution.
+- Understand HTTP and HTTPS.
+- Install and configure Nginx.
+- Deploy a static website.
+- Configure a reverse proxy.
+- Troubleshoot HTTP errors.
+- Analyse Nginx logs.
+
+## Technologies
+
+- Ubuntu Linux
+- Nginx
+- Python 3
+- Bash
+- Git and GitHub
+
+## Architecture
+
+```text
+Client
+  |
+  v
+Nginx :8085
+  |
+  +---- / --------> Static Website
+  |
+  +---- /api/ ----> Python Backend :5000
+```
+
+## Project Structure
+
+```text
+day5-nginx/
+├── README.md
+├── app.py
+├── myapp
+├── troubleshooting.md
+└── website/
+    └── index.html
+```
+
+## Installation
+
+Install Nginx:
 
 ```bash
 sudo apt update
-sudo apt install -y nginx python3
-# In a separate terminal, start a demo HTTP server:
-python3 -m http.server 3000 --bind 127.0.0.1
+sudo apt install nginx -y
 ```
 
-Install the example Nginx server block after reviewing it:
+Deploy the website:
 
 ```bash
-sudo cp day5-nginx/myapp.conf /etc/nginx/sites-available/myapp
-sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/myapp
-sudo nginx -t
-sudo systemctl reload nginx
-curl -i http://127.0.0.1:8080/
+sudo mkdir -p /var/www/myapp
+sudo cp website/index.html /var/www/myapp/
 ```
 
-The example uses **port 8080** to reduce conflicts with an existing site. The Python server is a simple demonstration backend, not a production application.
+Configure Nginx:
+
+```bash
+sudo cp myapp /etc/nginx/sites-available/myapp
+sudo ln -s /etc/nginx/sites-available/myapp \
+  /etc/nginx/sites-enabled/myapp
+```
+
+Validate and reload:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+## Start the Backend
+
+```bash
+python3 app.py
+```
+
+## Verification
+
+Test the website:
+
+```bash
+curl -I http://localhost:8085
+```
+
+Test the API:
+
+```bash
+curl http://localhost:8085/api/health
+```
 
 ## Troubleshooting
-If Nginx reports `502 Bad Gateway`, confirm the backend is running with `ss -ltnp` and `curl -i http://127.0.0.1:3000/`; inspect `sudo journalctl -u nginx` and `/var/log/nginx/error.log`.
 
-## Deliverables
-- `myapp.conf`
-- `status-codes.md` completed with **observed** responses
-- Short notes on DNS and TLS
+See `troubleshooting.md`.
+
+## Key Takeaway
+
+Nginx provides a reliable entry point for web applications
+and can route incoming requests to backend services.
