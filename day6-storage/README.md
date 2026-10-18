@@ -1,27 +1,73 @@
-# Day 06 — Storage, Monitoring & Debugging
+# Day 06 — Linux Storage, Monitoring & Troubleshooting
 
-## Mission
-Investigate storage usage, memory, filesystems and mounts. Document a safe example of an `/etc/fstab` entry and compare `df -h` before/after a **lab** mount.
+## Project Overview
 
-## Study and inspect
+This project explores Linux storage management,
+filesystem mounting, resource monitoring,
+and troubleshooting.
+
+It is part of my 90-Day DevOps Winter Arc.
+
+## Learning Objectives
+
+- Inspect disks and partitions.
+- Understand Linux filesystems.
+- Understand mount points and /etc/fstab.
+- Monitor disk usage.
+- Monitor CPU and memory.
+- Build a Bash monitoring script.
+- Troubleshoot resource problems.
+
+## Technologies
+
+- Ubuntu Linux
+- Bash
+- ext4
+- Linux system utilities
+- Git and GitHub
+
+## Project Structure
+
+```text
+day6-storage/
+├── README.md
+├── health-check.sh
+├── fstab-example.txt
+├── df-before.txt
+├── df-after.txt
+└── troubleshooting.md
+```
+
+## Storage Commands
 
 ```bash
 df -h
-du -sh /var/log 2>/dev/null
-free -h
 lsblk -f
 findmnt
-mount | head
-bash day6-storage/storage-check.sh
+sudo du -sh /var/log
 ```
 
-## Mount safety
-Do **not** edit `/etc/fstab` or format disks on a production machine. For a disposable VM, attach a separate blank lab disk or use a temporary loopback filesystem, and take a VM snapshot first. Prefer UUIDs to unstable device names. Test changes with `sudo mount -a` before rebooting. A bad fstab entry can disrupt boot.
+## Monitoring Commands
 
-## Deliverables (record after testing)
-- `df-before.txt` and `df-after.txt` (sanitised actual outputs)
-- Reviewed example and explanation in `fstab-notes.md`
-- A troubleshooting narrative: symptom → evidence → cause → fix → verification
+```bash
+free -h
+top
+uptime
+ps aux --sort=-%cpu
+```
 
-## Troubleshooting prompts
-Why might `df` report more used space than `du` accounts for? Consider deleted-but-open files and filesystem metadata.
+## Run the Monitoring Script
+
+```bash
+chmod +x health-check.sh
+./health-check.sh
+```
+
+## Troubleshooting
+
+See `troubleshooting.md`.
+
+## Key Takeaway
+
+Monitoring and storage management are essential
+for maintaining reliable Linux infrastructure.

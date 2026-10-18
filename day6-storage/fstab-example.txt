@@ -1,0 +1,4 @@
+# Example only — do not paste into /etc/fstab without validation.
+# Replace /absolute/path/to/storage-lab.img with the real absolute path.
+
+/absolute/path/to/storage-lab.img /mnt/winter-arc-storage ext4 loop,nofail 0 0
