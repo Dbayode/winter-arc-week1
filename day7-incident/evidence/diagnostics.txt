@@ -1,0 +1,42 @@
+====================================
+DAY 07 - LINUX INCIDENT DIAGNOSTICS
+====================================
+Date: 2026-10-19T20:07:01+01:00
+Hostname: dbayode-iMac18-1
+
+[1] System Uptime
+ 20:07:01 up 26 min,  1 user,  load average: 0.24, 0.44, 0.77
+
+[2] Disk Usage
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2       915G   53G  816G   7% /
+
+[3] Memory Usage
+               total        used        free      shared  buff/cache   available
+Mem:           7.1Gi       2.9Gi       859Mi       431Mi       4.1Gi       4.2Gi
+Swap:          4.0Gi          0B       4.0Gi
+
+[4] Nginx Service
+active
+
+[5] Nginx Configuration
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+[6] Listening Ports
+LISTEN 2      5          127.0.0.1:5000      0.0.0.0:*    users:(("python3",pid=9519,fd=3))
+LISTEN 0      511          0.0.0.0:8085      0.0.0.0:*                                     
+
+[7] Static Website
+HTTP Status: 200
+
+[8] Backend Application
+curl: (28) Operation timed out after 5002 milliseconds with 0 bytes received
+HTTP Status: 000
+
+[9] Reverse Proxy Endpoint
+HTTP Status: 404
+
+[10] Recent Nginx Errors
+
+Diagnostics completed.
