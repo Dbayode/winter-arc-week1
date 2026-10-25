@@ -1,0 +1,9 @@
+{
+  "name": "docker-security-lab",
+  "version": "1.0.0",
+  "description": "Day 13 Docker Security Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
